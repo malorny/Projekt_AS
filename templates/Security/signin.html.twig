@@ -1,0 +1,27 @@
+<html>
+    <head>
+    </head>
+    <body>
+        {# {{ form_start(form) }}
+            {{ form_errors(form.username) }}
+            {{ form_row(form.username) }}
+            {{ form_errors(form.password) }}
+            {{ form_row(form.password) }}
+            <button type="submit">Zaloguj</button>
+        {{ form_end(form) }} #}
+        {% if error %}
+            <div>{{ error.messageKey }}</div>
+        {% endif %}
+        <form action="{{ path('app_signin') }}" method="post">
+            <label for="username">Uzytkownik:</label>
+            <input type="text" id="username" name="_username" value="{{ last_username }}"/>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="_password"/>
+
+            <input type="hidden" name="_target_path" value="/dashboard"/>
+
+            <button type="submit">Zaloguj</button>
+        </form>
+    </body>
+</html>

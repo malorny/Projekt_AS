@@ -1,0 +1,27 @@
+controllers:
+    resource: ../src/Controller/
+    type: annotation
+
+kernel:
+    resource: ../src/Kernel.php
+    type: annotation
+
+app_homepage:
+    path: /
+    controller: App\Controller\HomepageController::number
+
+app_signup:
+    path: /signup
+    controller: App\Controller\SecurityController::signup
+
+app_signin:
+    path: /signin
+    controller: App\Controller\SecurityController::signin
+
+app_signout:
+    path: /signout
+    controller: App\Controller\SecurityController::signout
+
+app_dashboard:
+    path: /dashboard
+    controller: App\Controller\DashboardController::index

@@ -1,0 +1,15 @@
+<html>
+    <head>
+    </head>
+    <body>
+        {{ form_start(form) }}
+            {{ form_errors(form.username) }}
+            {{ form_row(form.username) }}
+            {{ form_errors(form.password.first) }}
+            {{ form_row(form.password.first) }}
+            {{ form_errors(form.password.second) }}
+            {{ form_row(form.password.second) }}
+            <button type="submit">Zarejestruj</button>
+        {{ form_end(form) }}
+    </body>
+</html>
