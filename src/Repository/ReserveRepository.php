@@ -3,7 +3,9 @@
 namespace App\Repository;
 
 use App\Entity\Reserve;
+
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -17,6 +19,20 @@ class ReserveRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Reserve::class);
+    }
+
+    public function anyReservation(int $lakeId, \DateTimeInterface $begin, \DateTimeInterface $end)
+    {
+        $query = $this->getEntityManager()->createQuery('
+            SELECT r
+            FROM App\Entity\Reserve r
+            WHERE r.lake_id = :lakeId AND ((r.begin_date <= :beginDate AND r.end_date >= :endDate) OR (r.end_date >= :beginDate AND r.begin_date <= :endDate))
+        ')
+        ->setParameter('lakeId', $lakeId)
+        ->setParameter('beginDate', $begin)
+        ->setParameter('endDate', $end);
+
+        return $query->getResult();
     }
 
     // /**

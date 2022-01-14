@@ -1,0 +1,18 @@
+<html>
+    <head>
+    </head>
+    <body>
+        Zarezerwuj lowisko
+        {{ form_start(form) }}
+            {{ form_errors(form.beginDate) }}
+            {{ form_row(form.beginDate) }}
+            {{ form_errors(form.endDate) }}
+            {{ form_row(form.endDate) }}
+            {{ form_errors(form.lakeId) }}
+            {{ form_row(form.lakeId) }}
+            <button type="submit">Zarezerwuj</button>
+        {{ form_end(form) }}
+        <br>
+        <a href="{{ path('app_dashboard') }}">Panel</a>
+    </body>
+</html>

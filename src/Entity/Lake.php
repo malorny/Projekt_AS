@@ -37,11 +37,6 @@ class Lake
      */
     private $email;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $reserve_id;
-
     public function getId(): ?int
     {
         return $this->id;
@@ -91,18 +86,6 @@ class Lake
     public function setEmail(string $email): self
     {
         $this->email = $email;
-
-        return $this;
-    }
-
-    public function getReserveId(): ?int
-    {
-        return $this->reserve_id;
-    }
-
-    public function setReserveId(int $reserve_id): self
-    {
-        $this->reserve_id = $reserve_id;
 
         return $this;
     }

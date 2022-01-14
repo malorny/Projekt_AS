@@ -1,0 +1,17 @@
+<html>
+    <head>
+    </head>
+    <body>
+        {% for user in users %}
+            {{ user.id }} {{ user.username }}<br>
+        {% endfor %}
+
+        <br>
+
+        {% for reservation in reservations %}
+            {{ reservation.username }} : {{ reservation.lakeName }} - od {{ reservation.reservation.beginDate|date('d/m/Y h:i:s A') }} od {{ reservation.reservation.endDate|date('d/m/Y h:i:s A') }} <a href="{{ path('app_admin_delete_reservation', { 'reservationId': reservation.reservation.id }) }}">Usun</a><br>
+        {% endfor %}
+
+        <a href="{{ path('app_signout') }}">Wyloguj</a>
+    </body>
+</html>

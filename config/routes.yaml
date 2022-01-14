@@ -25,3 +25,15 @@ app_signout:
 app_dashboard:
     path: /dashboard
     controller: App\Controller\DashboardController::index
+
+app_reserve_lake:
+    path: /reserve_lake
+    controller: App\Controller\LakeReservationController::reserveLake
+
+app_admin:
+    path: /admin
+    controller: App\Controller\AdminController::index
+
+app_admin_delete_reservation:
+    path: /admin/delete_reservation/{reservationId}
+    controller: App\Controller\AdminController::deleteReservation

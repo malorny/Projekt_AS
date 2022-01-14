@@ -2,6 +2,16 @@
     <head>
     </head>
     <body>
-        Witaj, {{ app.user.username }}
+        Witaj, {{ app.user.username }}<br><br>
+        Twoje rezerwacje:<br>
+        {% for userReservation in userReservations %}
+            {{ userReservation.name }} 
+            od {{ userReservation.begin|date('d/m/Y h:i:s A') }} 
+            do {{ userReservation.end|date('d/m/Y h:i:s A') }}
+            <br>
+        {% endfor %}
+        <br>
+        <a href="{{ path('app_reserve_lake') }}">Rezerwuj</a>
+        <a href="{{ path('app_signout') }}">Wyloguj</a>
     </body>
 </html>
