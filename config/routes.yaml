@@ -26,6 +26,10 @@ app_dashboard:
     path: /dashboard
     controller: App\Controller\DashboardController::index
 
+app_dashboard_table:
+    path: /dashboard/table
+    controller: App\Controller\DashboardController::getReservations
+
 app_reserve_lake:
     path: /reserve_lake
     controller: App\Controller\LakeReservationController::reserveLake
