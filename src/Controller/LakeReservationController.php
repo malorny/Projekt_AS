@@ -12,6 +12,7 @@ use App\Entity\Reserve;
 use App\Form\ReserveLakeFormType;
 
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 // use App\Repository\ReserveRepository;
 
@@ -46,5 +47,21 @@ class LakeReservationController extends AbstractController
         return $this->render('reserve-lake.html.twig', [
             'form' => $reservationForm->createView()
         ]);
+    }
+
+    public function checkLake(Request $request, ManagerRegistry $doctrine)
+    {
+        $reserveRepo = $doctrine->getRepository(Reserve::class);
+
+        $begin = new \DateTime();
+        $end = new \DateTime();
+
+        $begin->setDate(intval($request->get('begin_year')), intval($request->get('begin_month')), intval($request->get('begin_day')));
+        $begin->setTime(intval($request->get('begin_hour')), intval($request->get('begin_minute')));
+
+        $end->setDate(intval($request->get('end_year')), intval($request->get('end_month')), intval($request->get('end_day')));
+        $end->setTime(intval($request->get('end_hour')), intval($request->get('end_minute')));
+
+        return new JsonResponse(empty($reserveRepo->anyReservation($request->get('lake'), $begin, $end)));
     }
 }

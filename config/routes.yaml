@@ -34,6 +34,10 @@ app_reserve_lake:
     path: /reserve_lake
     controller: App\Controller\LakeReservationController::reserveLake
 
+app_reserve_lake_check:
+    path: /reserve_lake_check
+    controller: App\Controller\LakeReservationController::checkLake
+
 app_admin:
     path: /admin
     controller: App\Controller\AdminController::index

@@ -13,6 +13,11 @@
             <button type="submit">Zarezerwuj</button>
         {{ form_end(form) }}
         <br>
+        <div id="freeReservation" style="display: none;">
+            Zarezerwowane
+        </div>
         <a href="{{ path('app_dashboard') }}">Panel</a>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="/js/reserve-lake.js"></script>
     </body>
 </html>
