@@ -1,7 +1,14 @@
 <html>
     <head>
+        <link rel="stylesheet" href="/css/styles.css">
     </head>
     <body>
+        <script src="https://www.google.com/recaptcha/api.js"></script>
+        <script>
+            function onSubmit(token) {
+                document.getElementsByName("signup_form")[0].submit();
+            }
+        </script>
         {{ form_start(form) }}
             {{ form_errors(form.username) }}
             {{ form_row(form.username) }}
@@ -9,7 +16,7 @@
             {{ form_row(form.password.first) }}
             {{ form_errors(form.password.second) }}
             {{ form_row(form.password.second) }}
-            <button type="submit">Zarejestruj</button>
+            <button class="g-recaptcha" data-sitekey="6LcnrRwgAAAAAIY5NXQg1XjItzKDyNn-6ssdNgad" data-callback='onSubmit' data-action='submit'>Zarejestruj</button>
         {{ form_end(form) }}
     </body>
 </html>

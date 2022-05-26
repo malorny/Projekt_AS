@@ -1,5 +1,8 @@
 <?php
 
+#define("SITE_KEY", "");
+#define("SECRET_KEY", "");
+
 use App\Kernel;
 
 require_once dirname(__DIR__).'/vendor/autoload_runtime.php';

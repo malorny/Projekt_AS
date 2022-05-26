@@ -1,18 +1,18 @@
 <html>
     <head>
+        <link rel="stylesheet" href="/css/styles.css">
     </head>
     <body>
-        {# {{ form_start(form) }}
-            {{ form_errors(form.username) }}
-            {{ form_row(form.username) }}
-            {{ form_errors(form.password) }}
-            {{ form_row(form.password) }}
-            <button type="submit">Zaloguj</button>
-        {{ form_end(form) }} #}
+        <script src="https://www.google.com/recaptcha/api.js"></script>
+        <script>
+            function onSubmit(token) {
+                document.getElementsByName("signin_form")[0].submit();
+            }
+        </script>
         {% if error %}
             <div>{{ error.messageKey }}</div>
         {% endif %}
-        <form action="{{ path('app_signin') }}" method="post">
+        <form action="{{ path('app_signin') }}" method="post" name="signin_form">
             <label for="username">Uzytkownik:</label>
             <input type="text" id="username" name="_username" value="{{ last_username }}"/>
 
@@ -21,7 +21,7 @@
 
             <input type="hidden" name="_target_path" value="/dashboard"/>
 
-            <button type="submit">Zaloguj</button>
+            <button class="g-recaptcha" data-sitekey="6LcnrRwgAAAAAIY5NXQg1XjItzKDyNn-6ssdNgad" data-callback='onSubmit' data-action='submit'>Zaloguj</button>
         </form>
     </body>
 </html>
